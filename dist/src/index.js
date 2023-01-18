@@ -11,6 +11,16 @@ graphics = canvas.getContext('2d');
 var cv;
 var obj;
 var ang = 0;
+var AbrirCj1 =0;
+//var CerrarCj1 = 0;
+var AbrirCj2 = 0;
+//var CerrarCj2 =0;
+var RotarIzq = 0;
+var RotarDer =0;
+var limiteCj1 = 3;
+var limiteCj2 = 3;
+var limiteIzq = 6;
+var limiteDer = 6;
 function leerArchivo(e) {
     var archivo = e.target.files[0];
     if (!archivo) {
@@ -64,57 +74,83 @@ function decrDistFunc() {
     vp(0, 0, 0.5);
 }
 function Abrir() {
-    var af = 10;
+    if(AbrirCj1 < limiteCj1){
+        var af = 10;
     for (var i = 73; i <= 88; i++) {
         obj.w[i].x = obj.w[i].x + 2;
     }
     cv.setObj(obj);
     cv.paint();
+    AbrirCj1++;
+    }
+    
 }
 function Cerrar() {
-    var af = 10;
+
+    if(AbrirCj1 > 0){
+        var af = 10;
     for (var i = 73; i <= 88; i++) {
         obj.w[i].x = obj.w[i].x - 2;
     }
     cv.setObj(obj);
     cv.paint();
+    AbrirCj1--;
+    }
+    
 }
 
 function AbrirSegundo() {
-    var af = 10;
+    if(AbrirCj2 < limiteCj2){
+        var af = 10;
     for (var i = 97; i <= 112; i++) {
         obj.w[i].x = obj.w[i].x + 2;
     }
     cv.setObj(obj);
     cv.paint();
+    AbrirCj2++;
 }
 
+    }
+    
+
 function CerrarSegundo() {
-    var af = 10;
+    if(AbrirCj2 > 0){
+        var af = 10;
     for (var i = 97; i <= 112; i++) {
         obj.w[i].x = obj.w[i].x - 2;
     }
     cv.setObj(obj);
     cv.paint();
+    AbrirCj2--;
+    }
+    
 }
 
 function RotDerFunc() {
-    var af = 10;
+    if(RotarDer < limiteDer){
+        var af = 10;
     Rota3D.initRotate(obj.w[124], obj.w[128], af * Math.PI / 180);
     for (var i = 129; i <= 136; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
+    RotarDer++;
+    }
+    
 }
 function Rot1IzqFunc() {
-    var af = -10;
+    if(RotarIzq < limiteIzq){
+        var af = -10;
     Rota3D.initRotate(obj.w[124], obj.w[128], af * Math.PI / 180);
     for (var i = 129; i <= 136; i++) {
         obj.w[i] = Rota3D.rotate(obj.w[i]);
     }
     cv.setObj(obj);
     cv.paint();
+    RotarIzq++;
+    }
+    
 }
 /*function pza12DerFunc() {
   for (let i = 73; i <= 88; i++){
